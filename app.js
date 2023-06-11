@@ -35,7 +35,7 @@ const convertDbObjectToResponseObject = (dbObject) => {
   };
 };
 
-// Get Player API
+// Get Players list API
 
 app.get("/players/", async (request, response) => {
   const playerDetails = `
@@ -61,4 +61,19 @@ app.post("/players/", async (request, response) => {
     );`;
   const dbResponse = await db.run(postQuery);
   response.send("Player Added to Team");
+});
+
+// Get Player API
+
+app.get("/players/:playerId", async (request, response) => {
+  const { playerId } = request.params;
+  const getPlayerQuery = `
+    SELECT 
+    * 
+    FROM 
+    cricket_team
+    WHERE
+    player_id = ${playerId};`;
+  const player = await db.get(getPlayerQuery);
+  response.send(convertDbObjectToResponseObject(player));
 });
