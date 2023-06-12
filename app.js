@@ -83,7 +83,7 @@ app.get("/players/:playerId/", async (request, response) => {
 
 app.put("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
-  const bookDetails = request.body;
+  const playerDetails = request.body;
   const { playerName, jerseyNumber, role } = playerDetails;
   const updatePlayerQuery = `
   UPDATE
@@ -106,7 +106,7 @@ app.delete("/players/:playerId/", async (request, response) => {
     FROM
     cricket_team
     WHERE
-    player_Id = ${playerId};`;
+    player_id = ${playerId};`;
   await db.run(deleteQuery);
   response.send("Player Removed");
 });
