@@ -110,3 +110,5 @@ app.delete("/players/:playerId/", async (request, response) => {
   await db.run(deleteQuery);
   response.send("Player Removed");
 });
+
+module.exports = app;
