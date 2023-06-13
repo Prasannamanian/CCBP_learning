@@ -99,7 +99,7 @@ app.get("/movies/:movieId/", async (request, response) => {
   response.send(convertDbObjectToResponseObject(movieDetails));
 });
 
-// Get Director Movie List API
+// Get Director's Movie List API
 
 app.get("/directors/:directorId/movies/", async (request, response) => {
   const { directorId } = request.params;

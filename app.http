@@ -21,7 +21,7 @@ Content-Type: application/json
 GET http://localhost:3001/movies/48/
 
 
-###Get Director Movie List 
+###Get Director Movies List 
 GET http://localhost:3001/directors/6/movies/
 
 
@@ -36,5 +36,5 @@ Content-Type: application/json
 }
 
 
-### Delete Movie 
+### Delete Movie API
 DELETE http://localhost:3001/movies/58/
