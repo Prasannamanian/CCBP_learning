@@ -43,3 +43,13 @@ Content-Type: application/json
   "active": 3000,
   "deaths": 104
 }
+
+
+### Get State Statics
+
+GET http://localhost:3001/states/10/stats/
+
+
+### Get District State Name
+
+GET http://localhost:3001/districts/32/details/

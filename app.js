@@ -146,4 +146,45 @@ app.put("/districts/:districtId/", async (request, response) => {
   response.send("District Details Updated");
 });
 
+// Get State Statistics API
+
+app.get("/states/:stateId/stats/", async (request, response) => {
+  const { stateId } = request.params;
+  const staticQuery = `
+    SELECT 
+        sum(district.cases) AS totalCases,
+        sum(district.cured) AS totalCured,
+        sum(district.active) AS totalActive,
+        sum(district.deaths) AS totalDeaths
+    FROM
+        state
+        INNER JOIN district
+        ON state.state_id = district.state_id
+    WHERE
+        state.state_id = ${stateId}
+    GROUP BY
+        state.state_id;`;
+
+  const staticList = await db.get(staticQuery);
+  response.send(staticList);
+});
+
+// Get District StateName API
+
+app.get("/districts/:districtId/details/", async (request, response) => {
+  const { districtId } = request.params;
+  const getStateQuery = `
+    SELECT
+        state.state_name As stateName
+    FROM
+        district
+        INNER JOIN state
+        on district.state_id = state.state_id
+    WHERE
+        district.district_id = ${districtId};`;
+
+  const stateNameDetails = await db.get(getStateQuery);
+  response.send(stateNameDetails);
+});
+
 module.exports = app;
