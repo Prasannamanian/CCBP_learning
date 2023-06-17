@@ -1,0 +1,34 @@
+### Get Players List
+
+GET http://localhost:3001/players/
+
+
+### Get Player Details
+
+GET http://localhost:3001/players/5/
+
+
+### Updated Player Details
+
+PUT http://localhost:3001/players/6/
+Content-Type: application/json
+{
+  "playerName": "Raju"
+}
+
+### Get Match Details
+
+GET http://localhost:3001/matches/10/
+
+
+### Get Player Matches Details
+
+GET http://localhost:3001/players/1/matches/
+
+
+### Get Matches Player Details
+GET http://localhost:3001/matches/10/players/
+
+
+### Get Player Stats 
+GET http://localhost:3001/players/1/playerScores/
