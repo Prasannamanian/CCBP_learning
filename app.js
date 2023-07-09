@@ -131,8 +131,7 @@ app.put("/todos/:todoId/", async (request, response) => {
         id = ${todoId};`;
     updatedTodo = "Todo";
   }
-  console.log(putQuery);
-  console.log(updated);
+
   await db.run(putQuery);
   response.send(`${updatedTodo} Updated`);
 });
