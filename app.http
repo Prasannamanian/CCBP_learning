@@ -38,3 +38,7 @@ Content-Type: application/json
 PUT http://localhost:3002/todos/6
 Content-Type: application/json
 { "todo": "Some task" }
+
+
+###
+DELETE http://localhost:3002/todos/3
