@@ -1,20 +1,20 @@
 
-###
+### API 1 - scenario 1
 GET http://localhost:3002/todos/?status=TO%20DO
 
-###
+### API 1 - scenario 2
 GET http://localhost:3002/todos/?priority=HIGH
 
-###
+### API 1 - scenario 3
 GET http://localhost:3002/todos/?priority=HIGH&status=IN%20PROGRESS
 
-###
+### API 1 - scenario 4
 GET http://localhost:3002/todos/?search_q=Play
 
-###
+### API 2
 GET http://localhost:3002/todos/6
 
-###
+### API 3
 POST http://localhost:3002/todos/
 Content-Type: application/json
 {
@@ -24,21 +24,21 @@ Content-Type: application/json
   "status": "TO DO"
 }
 
-###
+### API 4 - scenario 1
 PUT http://localhost:3002/todos/6
 Content-Type: application/json
 {"status" : "DONE"}
 
-###
+### API 4 - scenario 2
 PUT http://localhost:3002/todos/6
 Content-Type: application/json
 { "priority": "HIGH" }
 
-###
+### API 4 - scenario 3
 PUT http://localhost:3002/todos/6
 Content-Type: application/json
 { "todo": "Some task" }
 
 
-###
+### API 5
 DELETE http://localhost:3002/todos/3
