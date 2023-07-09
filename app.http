@@ -1,12 +1,39 @@
 
 ###
-GET http://localhost:3001/todos/?status=TO%20DO
+GET http://localhost:3002/todos/?status=TO%20DO
 
 ###
-GET http://localhost:3001/todos/?priority=HIGH
+GET http://localhost:3002/todos/?priority=HIGH
 
 ###
-GET http://localhost:3001/todos/?priority=HIGH&status=IN%20PROGRESS
+GET http://localhost:3002/todos/?priority=HIGH&status=IN%20PROGRESS
 
 ###
-GET http://localhost:3001/todos/?search_q=Play
+GET http://localhost:3002/todos/?search_q=Play
+
+###
+GET http://localhost:3002/todos/6
+
+###
+POST http://localhost:3002/todos/
+Content-Type: application/json
+{
+  "id": 10,
+  "todo": "Finalize event theme",
+  "priority": "LOW",
+  "status": "TO DO"
+}
+
+###
+PUT http://localhost:3002/todos/6
+
+
+###
+PUT http://localhost:3002/todos/6
+Content-Type: application/json
+{ "priority": "HIGH" }
+
+###
+PUT http://localhost:3002/todos/6
+Content-Type: application/json
+{ "todo": "Some task" }
