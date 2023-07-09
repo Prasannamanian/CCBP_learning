@@ -1,0 +1,12 @@
+
+###
+GET http://localhost:3001/todos/?status=TO%20DO
+
+###
+GET http://localhost:3001/todos/?priority=HIGH
+
+###
+GET http://localhost:3001/todos/?priority=HIGH&status=IN%20PROGRESS
+
+###
+GET http://localhost:3001/todos/?search_q=Play
