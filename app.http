@@ -17,26 +17,30 @@ GET http://localhost:3002/todos/6
 ###
 POST http://localhost:3002/todos/
 Content-Type: application/json
+
 {
-  "id": 10,
+  "id": 6,
   "todo": "Finalize event theme",
   "priority": "LOW",
   "status": "TO DO"
 }
 
 ###
-PUT http://localhost:3002/todos/6
+PUT http://localhost:3002/todos/6/
 Content-Type: application/json
-{"status" : "DONE"}
+
+{ "status": "DONE" }
 
 ###
-PUT http://localhost:3002/todos/6
+PUT http://localhost:3002/todos/6/
 Content-Type: application/json
+
 { "priority": "HIGH" }
 
 ###
-PUT http://localhost:3002/todos/6
+PUT http://localhost:3002/todos/6/
 Content-Type: application/json
+
 { "todo": "Some task" }
 
 

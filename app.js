@@ -4,7 +4,7 @@ const path = require("path");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
-
+app.use(express.json());
 const dbPath = path.join(__dirname, "todoApplication.db");
 
 let db = null;
@@ -82,7 +82,7 @@ app.get("/todos/:todoId/", async (request, response) => {
 app.post("/todos/", async (request, response) => {
   const { id, todo, priority, status } = request.body;
   const putQuery = `
-    INSERT INTO todo (id, todo, priority, status)
+    INSERT INTO todo (id, 'todo', 'priority', 'status')
     VALUES (${id},'${todo}','${priority}','${status}');`;
   await db.run(putQuery);
   response.send("Todo Successfully Added");
@@ -93,17 +93,12 @@ app.put("/todos/:todoId/", async (request, response) => {
   const { status, priority, todo } = request.body;
   let putQuery = "";
   let updatedTodo = "";
-  const previousTodo = `SELECT * FROM todo WHERE id = ${todoId};`;
-  const previousTodoData = await db.get(previousTodo);
-  const { prev_status, prev_priority, prev_todo } = previousTodoData;
 
   if (status !== undefined) {
     putQuery = `
     UPDATE 
         todo 
-    SET 
-        todo = '${prev_todo}',
-        priority = '${prev_priority}',
+    SET
         status = '${status}'
     WHERE 
         id = ${todoId};`;
@@ -112,10 +107,8 @@ app.put("/todos/:todoId/", async (request, response) => {
     putQuery = `
     UPDATE 
         todo 
-    SET 
-        todo = '${prev_todo}',
-        priority = '${priority}',
-        status = '${prev_status}'
+    SET
+        priority = '${priority}'
     WHERE
         id = ${todoId};`;
     updatedTodo = "Priority";
@@ -124,9 +117,7 @@ app.put("/todos/:todoId/", async (request, response) => {
     UPDATE 
         todo 
     SET 
-        todo = '${todo}',
-        priority = '${prev_priority}',
-        status = '${prev_status}' 
+        todo = '${todo}'
     WHERE
         id = ${todoId};`;
     updatedTodo = "Todo";
