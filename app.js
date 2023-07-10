@@ -5,6 +5,7 @@ const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const app = express();
 app.use(express.json());
+
 const dbPath = path.join(__dirname, "todoApplication.db");
 
 let db = null;
@@ -26,6 +27,7 @@ const initializeDBAndServer = async () => {
 
 initializeDBAndServer();
 
+// API - 1
 app.get("/todos/", async (request, response) => {
   let { status, search_q, priority } = request.query;
   let getQuery = "";
@@ -66,6 +68,7 @@ app.get("/todos/", async (request, response) => {
   response.send(data);
 });
 
+// API - 2
 app.get("/todos/:todoId/", async (request, response) => {
   const { todoId } = request.params;
   const getQuery = `
@@ -79,6 +82,7 @@ app.get("/todos/:todoId/", async (request, response) => {
   response.send(data);
 });
 
+// API - 3
 app.post("/todos/", async (request, response) => {
   const { id, todo, priority, status } = request.body;
   const putQuery = `
@@ -88,6 +92,7 @@ app.post("/todos/", async (request, response) => {
   response.send("Todo Successfully Added");
 });
 
+// API -4
 app.put("/todos/:todoId/", async (request, response) => {
   const { todoId } = request.params;
   const { status, priority, todo } = request.body;
@@ -127,6 +132,7 @@ app.put("/todos/:todoId/", async (request, response) => {
   response.send(`${updatedTodo} Updated`);
 });
 
+// API - 5
 app.delete("/todos/:todoId/", async (request, response) => {
   const { todoId } = request.params;
   const deleteQuery = `
